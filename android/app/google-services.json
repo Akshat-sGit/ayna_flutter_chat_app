@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "183778840538",
+    "project_id": "ayna-c7a1e",
+    "storage_bucket": "ayna-c7a1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183778840538:android:f9079eeef30aaaefc7bae3",
+        "android_client_info": {
+          "package_name": "com.example.ayna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183778840538-842mu50viv2e7eadpdpfsr6sqkvg7j3d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqtksdZgTK-6zRGRE9cOt-riYxreuu5tw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183778840538-842mu50viv2e7eadpdpfsr6sqkvg7j3d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "183778840538-5hp72iqfkaldtpfajro93un4f791qjnh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ayna"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
