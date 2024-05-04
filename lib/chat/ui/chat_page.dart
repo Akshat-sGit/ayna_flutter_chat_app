@@ -70,11 +70,15 @@ class _ChatPageState extends State<ChatPage> {
                               horizontal: 14.0,
                             ),
                             decoration: BoxDecoration(
-                              color: message.isSentByUser
-                                  ? CupertinoColors.systemBlue
-                                  : CupertinoColors.darkBackgroundGray,
-                              borderRadius: BorderRadius.circular(25),
-                            ),
+                                color: message.isSentByUser
+                                    ? CupertinoColors.systemGreen
+                                    : CupertinoColors.systemGreen
+                                        .withOpacity(0.25),
+                                borderRadius:
+                                    const BorderRadiusDirectional.only(
+                                        topStart: Radius.circular(30.0),
+                                        bottomStart: Radius.circular(30.0),
+                                        bottomEnd: Radius.circular(30.0))),
                             child: Text(
                               message.content,
                               style: const TextStyle(
