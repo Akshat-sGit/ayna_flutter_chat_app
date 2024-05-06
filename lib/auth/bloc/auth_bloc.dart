@@ -34,22 +34,31 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<GoogleSignInRequested>((event, emit) async {
       emit(AuthLoading());
       try {
-        // Trigger Google Sign-in flow
-        final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-        if (googleUser == null) return;
+        if (_isWeb()) {
+          // Trigger Google Sign-in flow for web
+          final GoogleAuthProvider googleProvider = GoogleAuthProvider();
+          googleProvider.addScope('email');
+          googleProvider.addScope('profile');
 
-        // Obtain auth details from request
-        final GoogleSignInAuthentication googleAuth =
-            await googleUser.authentication;
-        final OAuthCredential credential = GoogleAuthProvider.credential(
-          accessToken: googleAuth.accessToken,
-          idToken: googleAuth.idToken,
-        );
+          final UserCredential userCredential =
+              await _auth.signInWithPopup(googleProvider);
+          emit(AuthSuccess(userCredential.user!));
+        } else {
+          // Trigger Google Sign-in flow for mobile
+          final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+          if (googleUser == null) return;
 
-        // Sign in with Firebase
-        UserCredential userCredential =
-            await _auth.signInWithCredential(credential);
-        emit(AuthSuccess(userCredential.user!));
+          final GoogleSignInAuthentication googleAuth =
+              await googleUser.authentication;
+          final OAuthCredential credential = GoogleAuthProvider.credential(
+            accessToken: googleAuth.accessToken,
+            idToken: googleAuth.idToken,
+          );
+
+          UserCredential userCredential =
+              await _auth.signInWithCredential(credential);
+          emit(AuthSuccess(userCredential.user!));
+        }
       } catch (error) {
         emit(AuthError(error.toString()));
       }
@@ -58,8 +67,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignOutRequested>((event, emit) async {
       emit(AuthLoading());
       await _auth.signOut();
-      await _googleSignIn.signOut();
+      if (!_isWeb()) {
+        await _googleSignIn.signOut();
+      }
       emit(AuthInitial());
     });
+  }
+
+  bool _isWeb() {
+    return identical(0, 0.0);
   }
 }

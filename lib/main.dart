@@ -1,3 +1,5 @@
+import 'package:ayna/auth/ui/login_page.dart';
+// import 'package:ayna/chat/ui/chat_page.dart'; 
 import 'package:ayna/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +8,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'auth/bloc/auth_bloc.dart';
-import 'auth/ui/login_page.dart';
 import 'chat/bloc/chat_bloc.dart';
+// import 'chat/ui/contacts_list_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

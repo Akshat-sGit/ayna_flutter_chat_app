@@ -35,7 +35,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
                 color: Colors.grey.withOpacity(0.10), // Background color
                 borderRadius: BorderRadius.circular(50.0), // Rounded corners
                 border: Border.all(
-                    color: CupertinoColors.systemGreen), // Blue border
+                    color: CupertinoColors.systemBlue), // Blue border
               ),
               padding:
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
@@ -45,7 +45,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
                     child: TextField(
                       controller: _textController,
                       style: const TextStyle(color: Colors.white),
-                      cursorColor: CupertinoColors.systemGreen,
+                      cursorColor: CupertinoColors.systemBlue,
                       decoration: const InputDecoration(
                         hintText: 'Type your message...',
                         hintStyle:
@@ -72,7 +72,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
                       padding: const EdgeInsets.all(4.0),
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        color: CupertinoColors.systemGreen,
+                        color: CupertinoColors.systemBlue,
                       ),
                       child: const Icon(
                         Icons.arrow_upward,
