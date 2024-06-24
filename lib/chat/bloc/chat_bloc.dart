@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../data/message_model.dart';
 import '../data/message_repository.dart';
@@ -8,7 +8,8 @@ import 'chat_state.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   final _messageRepository = MessageRepository();
-  final _channel = IOWebSocketChannel.connect('wss://echo.websocket.org');
+  final _channel =
+      WebSocketChannel.connect(Uri.parse('wss://echo.websocket.org'));
 
   ChatBloc() : super(ChatLoadingState()) {
     on<SendMessageEvent>((event, emit) async {
